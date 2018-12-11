@@ -11,13 +11,8 @@ services:
     ports:
       - 3306:3306
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+  adminer:
+    image: woahbase/alpine-adminer
     restart: always
-    environment:
-      PMA_HOST: db
-      PMA_PORT: "3306"
-    links:
-      - db:db
     ports:
-      - 80:80
+      - 80:8080

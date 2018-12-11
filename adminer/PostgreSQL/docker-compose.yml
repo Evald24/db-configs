@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - ${DB_PATH_HOST}:/var/lib/postgresql/data/pgdata
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: woahbase/alpine-adminer
+    restart: always
+    ports:
+      - 80:8080
