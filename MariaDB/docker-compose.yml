@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: yobasystems/alpine-mariadb
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ${DB_PATH_HOST}:/var/lib/mysql
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: "3306"
+    links:
+      - db:db
+    ports:
+      - 80:80
