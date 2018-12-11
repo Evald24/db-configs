@@ -2,14 +2,14 @@ version: "3"
 
 services:
   db:
-    image: postgres:alpine
+    image: clutteredcode/mongo-alpine
     restart: always
     environment:
-      POSTGRES_PASSWORD: ${DB_ROOT_PASSWORD}
+      MONGO_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
-      - ${DB_PATH_HOST}:/var/lib/postgresql/data/pgdata
+      - ${DB_PATH_HOST}:/data/db
     ports:
-      - 5432:5432
+      - 27017:27017
 
   adminer:
     image: woahbase/alpine-adminer
